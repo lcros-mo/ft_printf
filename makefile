@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   makefile                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lcros-mo <lcros-mo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/18 00:18:29 by lcros-mo          #+#    #+#             */
-/*   Updated: 2020/08/06 12:35:42 by lcros-mo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lcros-mo <lcros-mo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/20 23:02:07 by lcros-mo          #+#    #+#              #
+#    Updated: 2020/10/20 23:16:37 by lcros-mo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME		=	libftprintf.a
 
@@ -19,7 +19,6 @@ CC			=	gcc
 CFLAGS		+=	-Werror -Wall -Wextra
 
 AR			=	ar -rcs
-
 
 
 SRC			=	ft_printf.c \
@@ -33,21 +32,7 @@ SRC			=	ft_printf.c \
 				utils/ft_printf_utils_char.c \
 				utils/ft_printf_utils_int.c
 
-SRC_BONUS	=	bonus/ft_printf_bonus.c \
-				bonus/ft_printf_format_bonus.c \
-				bonus/ft_printf_flags_bonus.c \
-				bonus/types/ft_printf_alpha_bonus.c \
-				bonus/types/ft_printf_i_bonus.c \
-				bonus/types/ft_printf_hex_bonus.c \
-				bonus/types/ft_printf_u_bonus.c \
-				bonus/types/ft_printf_p_bonus.c \
-				bonus/utils/ft_printf_utils_char_bonus.c \
-				bonus/utils/ft_printf_utils_int_bonus.c
-
-
 OBJS		=	$(SRC:%.c=%.o)
-
-OBJS_BONUS	=	$(SRC_BONUS:%.c=%.o)
 
 
 all:		$(NAME)
@@ -59,13 +44,11 @@ $(NAME): $(OBJS) ft_printf.h
 			$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 
-bonus: $(OBJS_BONUS) $(OBJS) ft_printf.h
-			$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
 #main:
 #			$(CC) $(CFLAGS) -o $(NAME) $(SRC) main.c && ./$(NAME)
 
 clean:
-			rm -rf $(OBJS) $(OBJS_BONUS)
+			rm -rf $(OBJS)
 
 fclean: clean
 			rm -rf $(NAME)
